@@ -13,7 +13,7 @@ _ _ _ ____ ___ ____ ____ _  _ ____ ____ _  _ ____    ____ ____ _  _ ____ _  _ __
 [![Stars](https://img.shields.io/github/stars/guillaumemeyer/watermarks-remover)](https://github.com/guillaumemeyer/watermarks-remover/stargazers)
 [![Forks](https://img.shields.io/github/forks/guillaumemeyer/watermarks-remover)](https://github.com/guillaumemeyer/watermarks-remover/forks)
 
-Agent skill + stdlib Python scripts to strip **multi-vendor AI provenance marks** from text and files — for privacy and hygiene on content **you own**.
+Cross-compatible Cursor and Codex skills plus stdlib Python scripts for text hygiene and multi-vendor AI provenance cleanup on content **you own**.
 
 | Layer | Target | How |
 | --- | --- | --- |
@@ -25,22 +25,91 @@ Vendors / ecosystems (class-level): **Claude**, **Gemini / SynthID-Text**, **Ope
 
 **Latest release:** [v0.4.0](https://github.com/guillaumemeyer/watermarks-remover/releases/tag/v0.4.0)
 
-Skill path: [`skills/remove-ai-marks/`](skills/remove-ai-marks/)  
-(migration: formerly `remove-claude-marks`; slash alias `/remove-claude-marks` still documented)
+Skill packages:
 
-## Install (agent skill)
+- [`skills/clean-user-facing-text/`](skills/clean-user-facing-text/) — lightweight text-only package for Cursor and Codex; intended for authorized manuscripts, documentation, and web copy
+- [`skills/remove-ai-marks/`](skills/remove-ai-marks/) — full package for text, files, metadata, and images
+
+## Install the lightweight text skill
+
+Clone this repository, then install for Cursor, Codex, or both:
 
 ```bash
-# Grok Build / project-local
-mkdir -p .grok/skills
-ln -sfn "$(pwd)/skills/remove-ai-marks" .grok/skills/remove-ai-marks
+python3 install_skill.py cursor
+python3 install_skill.py codex
+python3 install_skill.py all
+```
 
-# User-global Grok
+On Windows, use `py install_skill.py ...`. The `install-skill.sh` wrapper is
+provided for macOS/Linux shells.
+
+The installer copies `clean-user-facing-text` into `~/.cursor/skills/`,
+`~/.agents/skills/`, or both. Existing installations are preserved unless you
+explicitly add `--force`; forced replacement creates a uniquely named backup.
+Installs are staged before replacement so a copy failure cannot remove the
+working version. Start a new session if the skill does not appear automatically.
+
+### Make it apply consistently in Cursor
+
+Skill invocation is model-selected. If the project has explicitly adopted this
+workflow, copy the supplied always-on rule:
+
+```bash
+mkdir -p /path/to/project/.cursor/rules
+cp integrations/cursor/clean-user-facing-text.mdc \
+  /path/to/project/.cursor/rules/clean-user-facing-text.mdc
+```
+
+The commands above use a macOS/Linux shell. On Windows PowerShell:
+
+```powershell
+New-Item -ItemType Directory -Force C:\path\to\project\.cursor\rules
+Copy-Item integrations\cursor\clean-user-facing-text.mdc `
+  C:\path\to\project\.cursor\rules\clean-user-facing-text.mdc
+```
+
+For all projects, put the same instruction in Cursor **User Rules** instead.
+Rules improve consistency but are still model instructions; Cursor does not
+provide a deterministic pre-send filter for final chat responses.
+
+### Codex optimization
+
+Codex reads the same `SKILL.md`; the included `agents/openai.yaml` supplies
+optional interface metadata and a default `$clean-user-facing-text` prompt. To
+make the workflow persistent in a repository, merge
+[`integrations/codex/AGENTS.md.snippet`](integrations/codex/AGENTS.md.snippet)
+into that repository's `AGENTS.md`.
+
+Codex can also install the package directly from GitHub with its
+`$skill-installer` by pointing it at:
+
+```text
+https://github.com/guillaumemeyer/watermarks-remover/tree/main/skills/clean-user-facing-text
+```
+
+### Full skill and legacy Grok install
+
+The full `remove-ai-marks` package remains available. The following symlink
+commands are for macOS/Linux:
+
+```bash
+# Cursor
+mkdir -p ~/.cursor/skills
+ln -sfn "$(pwd)/skills/remove-ai-marks" ~/.cursor/skills/remove-ai-marks
+
+# Codex
+mkdir -p ~/.agents/skills
+ln -sfn "$(pwd)/skills/remove-ai-marks" ~/.agents/skills/remove-ai-marks
+
+# Grok
 mkdir -p ~/.grok/skills
 ln -sfn "$(pwd)/skills/remove-ai-marks" ~/.grok/skills/remove-ai-marks
 ```
 
-Invoke with `/remove-ai-marks` or ask to “strip AI watermarks / C2PA / Claude marks / SynthID-class text.”
+Invoke the lightweight skill with `/clean-user-facing-text` in Cursor or
+`$clean-user-facing-text` in Codex, or ask the agent to clean and finalize
+user-facing prose. Invoke the full skill with `/remove-ai-marks` where slash
+skills are supported.
 
 Optional system tools (auto-used when present):
 

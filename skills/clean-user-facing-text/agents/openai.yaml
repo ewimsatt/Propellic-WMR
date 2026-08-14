@@ -1,0 +1,4 @@
+interface:
+  display_name: "Clean User-Facing Text"
+  short_description: "Sanitize and rewrite user-facing prose"
+  default_prompt: "Use $clean-user-facing-text to clean and finalize this user-facing prose without changing code or factual meaning."

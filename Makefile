@@ -1,6 +1,7 @@
 .PHONY: test smoke smoke-synthid bootstrap-synthid docker-synthid-build docker-synthid-help \
 	smoke-ctrlregen bootstrap-ctrlregen docker-ctrlregen-build docker-ctrlregen-help \
-	smoke-markllm bootstrap-markllm docker-markllm-build docker-markllm-help install-skill clean
+	smoke-markllm bootstrap-markllm docker-markllm-build docker-markllm-help \
+	install-text-skill install-cursor-skill install-codex-skill install-skill clean
 
 SCRIPTS := skills/remove-ai-marks/scripts
 PYTHON ?= $(shell if [ -x .venv/bin/python ]; then echo .venv/bin/python; else echo python3; fi)
@@ -70,6 +71,15 @@ install-skill:
 	mkdir -p $(HOME)/.grok/skills
 	ln -sfn $(CURDIR)/skills/remove-ai-marks $(HOME)/.grok/skills/remove-ai-marks
 	@echo "linked -> $(HOME)/.grok/skills/remove-ai-marks"
+
+install-text-skill:
+	$(PYTHON) install_skill.py all
+
+install-cursor-skill:
+	$(PYTHON) install_skill.py cursor
+
+install-codex-skill:
+	$(PYTHON) install_skill.py codex
 
 clean:
 	find . -type d -name __pycache__ -exec rm -rf {} + 2>/dev/null || true
