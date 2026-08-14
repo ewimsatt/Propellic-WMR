@@ -13,6 +13,6 @@ transformers==4.37.2
 accelerate==0.27.2
 controlnet-aux==0.0.9
 color-matcher==0.6.0
-safetensors==0.4.3
+safetensors==0.8.0
 Pillow==12.3.0
 piexif==1.1.3
