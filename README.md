@@ -8,7 +8,7 @@ Propellic works with travel and tourism brands where content moves through a lot
 
 It runs on your machine. It does not upload files. It does not promise to fool a vendor detector. It gives you a clear report of what it found and what it changed.
 
-> Use this only for content you own or are authorized to process. It is not for academic fraud, deceptive attribution, or bypassing platform policy.
+> Use this only for content you own or are authorized to process. It is not for deceptive attribution or bypassing platform policy.
 
 ## What it does
 
