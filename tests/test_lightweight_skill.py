@@ -20,6 +20,7 @@ def test_lightweight_clean_text_cli():
         [sys.executable, str(SKILL / "scripts" / "clean_text.py"), "-", "--stats"],
         input="Hello\u200b world\u3000again",
         text=True,
+        encoding="utf-8",
         capture_output=True,
         check=True,
     )
