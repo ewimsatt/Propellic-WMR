@@ -30,6 +30,19 @@ Skill packages:
 - [`skills/clean-user-facing-text/`](skills/clean-user-facing-text/) — lightweight text-only package for Cursor and Codex; intended for authorized manuscripts, documentation, and web copy
 - [`skills/remove-ai-marks/`](skills/remove-ai-marks/) — full package for text, files, metadata, and images
 
+## Desktop app (no terminal needed)
+
+```bash
+python3 gui/launch.py
+```
+
+Or double-click `gui/WatermarksRemover.bat` (Windows) / `gui/watermarks-remover.command` (macOS).
+Drag files in, read the verdict, click clean. Paste text to see hidden characters revealed in
+place. Python 3.10+ stdlib only — no packages to install. Runs on **Windows, macOS and Linux**,
+loopback-only, with every action mapped to the same scripts the CLI calls.
+
+Details: [`gui/README.md`](gui/README.md)
+
 ## Install the lightweight text skill
 
 Clone this repository, then install for Cursor, Codex, or both:
