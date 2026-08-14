@@ -35,8 +35,8 @@ python3 gui/launch.py
 
 The app binds to `127.0.0.1`, uses a per-session token for its API, and keeps files on the local machine.
 
-- **macOS:** double-click `gui/watermarks-remover.command`
-- **Windows:** double-click `gui/WatermarksRemover.bat`
+- **macOS:** double-click `gui/Propellic-WMR.command`
+- **Windows:** double-click `gui/PropellicWMR.bat`
 - **Linux:** run `python3 gui/launch.py`
 
 See [the desktop app guide](gui/README.md) for screenshots, supported workflows, and troubleshooting.

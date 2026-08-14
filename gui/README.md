@@ -1,6 +1,6 @@
-# watermarks-remover — desktop app
+# Propellic WMR desktop app
 
-A point-and-click front end for the `remove-ai-marks` scripts. No terminal, no
+A point-and-click front end for the local processing scripts. No terminal, no
 Python packages to install, and nothing leaves your computer.
 
 Works on **Windows, macOS and Linux**.
@@ -11,9 +11,9 @@ Works on **Windows, macOS and Linux**.
 
 | Your system | What to do |
 | --- | --- |
-| **Windows** | Double-click **`WatermarksRemover.bat`** |
-| **macOS** | Double-click **`watermarks-remover.command`** |
-| **Linux** | `./watermarks-remover.command`, or `python3 gui/launch.py` |
+| **Windows** | Double-click **`PropellicWMR.bat`** |
+| **macOS** | Double-click **`Propellic-WMR.command`** |
+| **Linux** | `./Propellic-WMR.command`, or `python3 gui/launch.py` |
 
 The app opens in its own window if you have [pywebview](https://pywebview.flowrl.com/)
 installed, and in your default browser otherwise. Both are the same app — the
@@ -23,7 +23,7 @@ On macOS and Linux the launcher needs its executable bit, which git only keeps
 if it was committed that way:
 
 ```bash
-git update-index --chmod=+x gui/watermarks-remover.command
+git update-index --chmod=+x gui/Propellic-WMR.command
 ```
 
 **Requirements:** Python 3.10 or newer, and nothing else. If Windows says Python

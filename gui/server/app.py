@@ -124,7 +124,7 @@ def resolve_ref(ref: dict[str, Any]) -> tuple[Path, str, bool]:
 
 
 class Handler(BaseHTTPRequestHandler):
-    server_version = "watermarks-remover-gui"
+    server_version = "Propellic-WMR"
     protocol_version = "HTTP/1.1"
 
     # -- plumbing ---------------------------------------------------------

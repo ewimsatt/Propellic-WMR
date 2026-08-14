@@ -47,6 +47,16 @@ def test_serves_the_shipped_assets(server):
     assert headers["Content-Type"] == "text/javascript; charset=utf-8"
 
 
+def test_user_facing_gui_branding_is_propellic_only(server):
+    _status, _headers, page = request(server, "/")
+    _status, _headers, script = request(server, "/assets/app.js")
+    launcher = (ROOT / "gui" / "launch.py").read_text(encoding="utf-8")
+
+    visible_copy = page + script + launcher.encode("utf-8")
+    assert b"Propellic WMR" in visible_copy
+    assert b"watermarks-remover" not in visible_copy
+
+
 @pytest.mark.parametrize(
     "path",
     [

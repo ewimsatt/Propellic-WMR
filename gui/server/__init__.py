@@ -1,1 +1,1 @@
-"""Local server for the watermarks-remover GUI."""
+"""Local server for the Propellic WMR desktop app."""

@@ -1,4 +1,4 @@
-/* watermarks-remover GUI — front end.
+/* Propellic WMR GUI front end.
    Talks to the local server only; every action maps to a skill script call. */
 
 (() => {
@@ -1099,7 +1099,7 @@ $("#setupRefresh").addEventListener("click", loadSetup);
 $("#quitBtn").addEventListener("click", async () => {
   try { await api("/api/shutdown", {}); } catch { /* the server is going away */ }
   document.body.replaceChildren(el("div", { class: "farewell" },
-    el("p", { text: "watermarks-remover has stopped. You can close this window." })));
+    el("p", { text: "Propellic WMR has stopped. You can close this window." })));
 });
 
 // ---------------------------------------------------------------- 05 guide

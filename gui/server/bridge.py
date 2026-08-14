@@ -1,4 +1,4 @@
-"""Adapter between the GUI and the remove-ai-marks skill scripts.
+"""Adapter between the desktop app and its local processing scripts.
 
 Everything runs in-process: the skill modules are plain stdlib Python, so
 importing them avoids a subprocess (and its argument-quoting pitfalls) per
@@ -41,8 +41,8 @@ def _find_scripts_dir() -> Path:
         if (c / "text_unicode.py").is_file():
             return c.resolve()
     raise RuntimeError(
-        "Cannot find skills/remove-ai-marks/scripts. Put the gui/ folder inside "
-        "the watermarks-remover checkout, or set WATERMARKS_SKILL_DIR."
+        "Cannot find the required local processing scripts. Put the gui/ folder inside "
+        "the Propellic WMR checkout, or set WATERMARKS_SKILL_DIR."
     )
 
 

@@ -10,7 +10,7 @@ for candidate in python3 python; do
 done
 
 echo
-echo "  Python 3.10 or newer is required to run watermarks-remover."
+echo "  Python 3.10 or newer is required to run Propellic WMR."
 echo "  macOS:  brew install python"
 echo "  Linux:  sudo apt install python3 python3-tk"
 echo

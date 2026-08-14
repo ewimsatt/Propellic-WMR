@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Start the watermarks-remover GUI.
+"""Start the Propellic WMR desktop app.
 
     python3 gui/launch.py
 
@@ -27,7 +27,7 @@ if sys.version_info < (3, 10):
 from server.app import TOKEN, make_server  # noqa: E402
 
 BANNER = r"""
-  watermarks-remover
+  Propellic WMR
   ------------------------------------------------
   Strip AI provenance marks from content you own.
 """
@@ -45,7 +45,7 @@ def _try_window(url: str, httpd) -> bool:
 
     try:
         window = webview.create_window(
-            "watermarks-remover",
+            "Propellic WMR",
             url,
             width=1180,
             height=820,

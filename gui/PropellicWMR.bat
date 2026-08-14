@@ -19,7 +19,7 @@ goto done
 
 :nopython
 echo.
-echo   Python 3.10 or newer is required to run watermarks-remover.
+echo   Python 3.10 or newer is required to run Propellic WMR.
 echo   Download it from https://www.python.org/downloads/
 echo   During setup, tick "Add python.exe to PATH".
 echo.
