@@ -12,7 +12,7 @@
 # the 24 known CVEs fixed after the upstream 9.4.0 pin.
 torch==2.13.0
 transformers==5.15.0
-tokenizers==0.23.1
+tokenizers==0.23.2
 datasets==5.0.1
 accelerate==1.14.0
 SentencePiece==0.2.2
